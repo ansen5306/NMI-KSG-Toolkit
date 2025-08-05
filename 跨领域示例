@@ -1,0 +1,16 @@
+from NMLKSG.applications.feature_selection import feature_selection
+from sklearn.datasets import fetch_openml
+from sklearn.ensemble import RandomForestClassifier
+
+def image_classification_example():
+    # 加载CIFAR-10数据集
+    cifar = fetch_openml('CIFAR_10', version=1)
+    X, y = cifar.data, cifar.target
+
+    # 特征选择
+    top_features = feature_selection(X, y, top_k=10)
+
+    # 训练模型
+    model = RandomForestClassifier()
+    model.fit(X[:, [f[0] for f in top_features]], y)
+    print("AUC:", model.score(X_test, y_test))

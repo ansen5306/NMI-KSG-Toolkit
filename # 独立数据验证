@@ -1,0 +1,7 @@
+# test_independence.py
+def test_independence(seed=42):
+    np.random.seed(seed)
+    X = np.random.normal(0, 1, 1000)
+    Y = np.random.normal(0, 1, 1000)
+    nmi = NMLKSG().compute_nmi(X, Y)
+    assert abs(nmi - 0.002) < 0.001  # 验证说明书Page3结果

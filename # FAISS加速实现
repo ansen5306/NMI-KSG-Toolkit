@@ -1,0 +1,6 @@
+# fast_kdtree.py
+import faiss
+
+class FAISS_KDTree:
+    def __init__(self, dim, metric='Linf'):
+        self.index = faiss.IndexFlat(dim, faiss.METRIC_Linf)
